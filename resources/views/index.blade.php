@@ -144,7 +144,7 @@
         <div class="row">
             <div class="col-md-6">
                 {{ Form::open(['route' => ['send.contact'], 'class' => 'probootstrap-form']) }}
-                <h2 class="text-black mt0">Get In Touch</h2>
+                <h2 class="text-black mt0">問い合わせ</h2>
                 <div class="form-group">
                     <input type="text" name="name" class="form-control" placeholder="お名前" required>
                 </div>
