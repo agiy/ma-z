@@ -37,6 +37,6 @@ class TestMail extends Command
      */
     public function handle()
     {
-        \Mail::to('agiyagiyagiy@gmail.com')->send(new \App\Mail\ContactForm());
+        \Mail::to(env('TO_EMAIL'))->send(new \App\Mail\ContactForm());
     }
 }

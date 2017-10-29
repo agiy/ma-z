@@ -5,12 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Ma-z システムズ</title>
 
-{!! Html::style('assets/css/styles-merged.css') !!}
-{!! Html::style('css/app.css') !!}
-{!! Html::style('assets/fonts/icomoon/style.css') !!}
 
-{!! Html::script('assets/js/vendor/html5shiv.min.js') !!}
-{!! Html::script('assets/js/vendor/respond.min.js') !!}
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    {!! Html::style('assets/css/styles-merged.css') !!}
+    {!! Html::style('css/app.css') !!}
+    {!! Html::style('assets/fonts/icomoon/style.css') !!}
+
+    {!! Html::script('assets/js/vendor/html5shiv.min.js') !!}
+    {!! Html::script('assets/js/vendor/respond.min.js') !!}
+
+
 </head>
 <body>
 
@@ -131,49 +137,38 @@
 </section>
 <!-- END section -->
 
+@include('alert')
 
-<section class="probootstrap-section probootstrap-bg-light" data-section="contact">
+<section class="probootstrap-section probootstrap-bg-light" data-section="contact" id="contactForm">
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                <form action="" class="probootstrap-form">
-                    <h2 class="text-black mt0">Get In Touch</h2>
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Your Name">
-                    </div>
-                    <div class="form-group">
-                        <input type="email" class="form-control" placeholder="Your Email">
-                    </div>
-                    <div class="form-group">
-                        <input type="email" class="form-control" placeholder="Your Phone">
-                    </div>
-                    <div class="form-group">
-                        <textarea class="form-control" cols="30" rows="10" placeholder="Write a Message"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <input type="submit" class="btn btn-primary" value="Sebd Message">
-                    </div>
-                </form>
+                {{ Form::open(['route' => ['send.contact'], 'class' => 'probootstrap-form']) }}
+                <h2 class="text-black mt0">Get In Touch</h2>
+                <div class="form-group">
+                    <input type="text" name="name" class="form-control" placeholder="お名前" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" name="email" class="form-control" placeholder="メールアドレス" required>
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control" name="contact_message" cols="30" rows="10" placeholder="問い合わせ内容" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    {!! app('captcha')->display()!!}
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" class="btn btn-primary" value="送信">
+                </div>
+                {{ Form::close() }}
             </div>
             <div class="col-md-3 col-md-push-1">
                 <ul class="probootstrap-contact-details">
                     <li>
                         <span class="text-uppercase">Email</span>
-                        probootstrap@gmail.com
-                    </li>
-                    <li>
-                        <span class="text-uppercase">Phone</span>
-                        +30 976 1382 9921
-                    </li>
-                    <li>
-                        <span class="text-uppercase">Fax</span>
-                        +30 976 1382 9922
-                    </li>
-                    <li>
-                        <span class="text-uppercase">Address</span>
-                        San Francisco, CA <br>
-                        4th Floor8 Lower <br>
-                        San Francisco street, M1 50F
+                        info@ma-z-systems.jp
                     </li>
                 </ul>
             </div>
@@ -203,12 +198,6 @@
 
 {!! Html::script('assets/js/scripts.min.js') !!}
 {!! Html::script('assets/js/custom.js') !!}
-{{--<script src="../../../../Downloads/frame/js/scripts.min.js"></script>--}}
-{{--<script src="../../../../Downloads/frame/js/custom.js"></script>--}}
-
-<!-- Google Map -->
-<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-<script src="js/google-map.js"></script> -->
 
 </body>
 </html>
